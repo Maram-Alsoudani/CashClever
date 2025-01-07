@@ -8,11 +8,12 @@ class AppTextStyles {
   static TextStyle topHeading = TextStyle(
     fontSize: 26.sp,
     fontFamily: 'Ubuntu',
-    fontWeight: FontWeight.normal,
-    color: AppColors.red,
+    fontWeight: FontWeight.bold,
+    color: AppColors.black,
   );
   static TextStyle heading = TextStyle(
     fontSize: 24.sp,
+    fontFamily: 'Maven Pro',
     fontWeight: FontWeight.bold,
     color: AppColors.black,
   );
