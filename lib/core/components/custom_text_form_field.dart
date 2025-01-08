@@ -1,6 +1,6 @@
+import 'package:finsage/core/utils/extentions/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../utils/app_styles.dart';
 import '../utils/colors.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -9,6 +9,8 @@ class CustomTextFormField extends StatefulWidget {
   final String? Function(String?) validator;
   final TextInputType keyboardType;
   final bool? isSecured;
+  final bool? filled;
+  final Color? filledColor;
   final Widget? suffixIcon;
   final BorderRadius? borderRadius;
   final bool enable;
@@ -33,6 +35,8 @@ class CustomTextFormField extends StatefulWidget {
     this.focusedBorderColor,
     this.errorBorderColor,
     this.onChanged,
+    this.filled,
+    this.filledColor
   });
 
   @override
@@ -51,21 +55,21 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(8.0.r),
+      padding:  EdgeInsets.symmetric(vertical: 8.0.sp),
       child: TextFormField(
         enabled: widget.enable,
         controller: widget.controller,
         keyboardType: widget.keyboardType,
         validator: widget.validator,
         obscureText: _isSecured,
-        cursorColor: AppColors.medGray,
-        style: AppTextStyles.lightBodyText.copyWith(color: AppColors.black),
+        cursorColor: AppColors.black,
+        style: context.bodyMedium,
         onChanged: widget.onChanged,
         decoration: InputDecoration(
-          filled: true,
-          fillColor: AppColors.medGray,
+          filled: widget.filled?? false,
+          fillColor: widget.filledColor,
           hintText: widget.hint,
-          hintStyle:AppTextStyles.lightBodyText,
+          hintStyle:context.bodyMedium.copyWith(color: AppColors.medGray),
           suffixIcon: widget.isSecured == true
               ? IconButton(
             onPressed: () {
@@ -75,14 +79,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             },
             icon: Icon(
               _isSecured ? Icons.visibility_off : Icons.visibility,
-              color: AppColors.medGray,
+              color: AppColors.primary,
             ),
           )
               : widget.suffixIcon,
           enabledBorder: OutlineInputBorder(
             borderRadius: widget.borderRadius ?? BorderRadius.circular(8.r),
             borderSide: BorderSide(
-              width: 1,
+              width: 1.5,
               color: widget.enabledBorderColor ?? AppColors.white,
             ),
           ),
@@ -96,22 +100,22 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           focusedBorder: OutlineInputBorder(
             borderRadius: widget.borderRadius ?? BorderRadius.circular(8.r),
             borderSide: BorderSide(
-              width: 1,
-              color: widget.focusedBorderColor ?? AppColors.white,
+              width: 1.5.w,
+              color: widget.focusedBorderColor ?? AppColors.darkGray,
             ),
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: widget.borderRadius ?? BorderRadius.circular(8.r),
             borderSide: BorderSide(
-              width: 1,
-              color: widget.errorBorderColor ?? AppColors.babyPink,
+              width: 1.5.w,
+              color: widget.errorBorderColor ?? AppColors.red,
             ),
           ),
           focusedErrorBorder: OutlineInputBorder(
             borderRadius: widget.borderRadius ?? BorderRadius.circular(8.r),
             borderSide: BorderSide(
-              width: 1,
-              color: widget.errorBorderColor ?? AppColors.babyPink,
+              width: 1.5.w,
+              color: widget.errorBorderColor ?? AppColors.red,
             ),
           ),
         ),

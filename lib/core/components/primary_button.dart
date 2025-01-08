@@ -1,7 +1,6 @@
+import 'package:finsage/core/utils/extentions/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../utils/app_styles.dart';
 import '../utils/colors.dart';
 
 class PrimaryButton extends StatelessWidget {
@@ -13,22 +12,19 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 8.0.sp, vertical: 4.0.sp),
-      child: ElevatedButton(
-          style: ButtonStyle(
+    return ElevatedButton(
+        style: ButtonStyle(
 
-            padding:
-                WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 10.sp)),
-            backgroundColor:
-                backgroundColor ?? WidgetStatePropertyAll(AppColors.babyPink),
-            foregroundColor: WidgetStatePropertyAll(AppColors.white),
-            textStyle: WidgetStatePropertyAll(AppTextStyles.subheading),
-            shape: WidgetStatePropertyAll(
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16))),
-          ),
-          onPressed: onClicked,
-          child: label),
-    );
+          padding:
+              WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 10.sp)),
+          backgroundColor:
+              backgroundColor ?? WidgetStatePropertyAll(AppColors.babyPink),
+          foregroundColor: WidgetStatePropertyAll(AppColors.white),
+          textStyle: WidgetStatePropertyAll(context.bodyLarge.copyWith(fontWeight: FontWeight.bold, fontSize: 24)),
+          shape: WidgetStatePropertyAll(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16))),
+        ),
+        onPressed: onClicked,
+        child: label);
   }
 }
