@@ -1,20 +1,23 @@
-import 'package:finsage/config/routes.dart';
-import 'package:finsage/core/components/custom_text_form_field.dart';
-import 'package:finsage/core/components/primary_button.dart';
-import 'package:finsage/core/components/validators.dart';
-import 'package:finsage/core/utils/colors.dart';
 import 'package:finsage/core/utils/extentions/text_styles.dart';
-import 'package:finsage/core/utils/images.dart';
-import 'package:finsage/core/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+import '../../../../config/routes.dart';
+import '../../../../core/components/custom_text_form_field.dart';
+import '../../../../core/components/primary_button.dart';
+import '../../../../core/components/validators.dart';
+import '../../../../core/utils/colors.dart';
+import '../../../../core/utils/images.dart';
+import '../../../../core/utils/strings.dart';
 
+class RegisterScreen extends StatelessWidget {
+  TextEditingController userNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+
+  RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,7 @@ class LoginScreen extends StatelessWidget {
           padding: EdgeInsets.only(
             left: 30.sp,
             right: 30.sp,
-            top: 130.sp,
+            top: 90.sp,
           ),
           child: Column(
             children: [
@@ -33,7 +36,7 @@ class LoginScreen extends StatelessWidget {
                 width: 100.w,
                 height: 100.h,
               ),
-              Text(AppStrings.signIn,
+              Text(AppStrings.signUp,
                   style: context.headlineLarge
                       .copyWith(fontWeight: FontWeight.w400)),
               Divider(
@@ -46,6 +49,15 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    Text(
+                      AppStrings.userName,
+                      style: context.bodyLarge,
+                    ),
+                    CustomTextFormField(
+                        enabledBorderColor: AppColors.darkGray,
+                        hint: AppStrings.enterYourName,
+                        validator: (val) => AppValidators.validateUsername(val),
+                        controller: userNameController),
                     Text(
                       AppStrings.email,
                       style: context.bodyLarge,
@@ -65,35 +77,36 @@ class LoginScreen extends StatelessWidget {
                         hint: AppStrings.enterYorPass,
                         validator: (val) => AppValidators.validatePassword(val),
                         controller: passwordController),
+                    Text(
+                      AppStrings.confirmPass,
+                      style: context.bodyLarge,
+                    ),
+                    CustomTextFormField(
+                        isSecured: true,
+                        enabledBorderColor: AppColors.darkGray,
+                        hint: AppStrings.confirmPass,
+                        validator: (val) => AppValidators.validateConfirmPassword(val, passwordController.text),
+                        controller: confirmPasswordController),
                     Padding(
                       padding: EdgeInsets.only(top: 20.sp),
                       child: PrimaryButton(
-                        label: Text(AppStrings.signIn),
+                        label: Text(AppStrings.signUp),
                         backgroundColor:
-                            WidgetStatePropertyAll(AppColors.primary),
+                        WidgetStatePropertyAll(AppColors.primary),
                       ),
                     ),
-                    TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          AppStrings.forgotPass,
-                          style: context.bodySmall,
-                          textAlign: TextAlign.center,
-                        )),
-                    SizedBox(
-                      height: 130.h,
-                    ),
+                    SizedBox(height: 25.h,),
                     InkWell(
                       onTap: (){
-                        context.go(AppRoutes.registerScreen);
+                        context.go(AppRoutes.loginScreen);
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(AppStrings.doNotHaveAnAcc,
+                          Text(AppStrings.alreadyHaveAnAcc,
                               style: context.bodySmall),
                           Text(
-                            AppStrings.signUp,
+                            AppStrings.signIn,
                             style: context.bodySmall
                                 .copyWith(decoration: TextDecoration.underline),
                           ),

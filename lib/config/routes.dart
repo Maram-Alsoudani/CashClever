@@ -1,4 +1,5 @@
 import 'package:finsage/fearures/login/presentation/pages/login_screen.dart';
+import 'package:finsage/fearures/register/presentation/pages/register_screen.dart';
 import 'package:go_router/go_router.dart';
 
 import '../fearures/splash/presentation/pages/splash_screen.dart';
@@ -20,6 +21,10 @@ class AppRoutes {
       GoRoute(
         path: loginScreen,
         builder: (context, state) => LoginScreen(),
+      ),
+      GoRoute(
+        path: registerScreen,
+        builder: (context, state) => RegisterScreen(),
       ),
     ],
   );

@@ -7,6 +7,15 @@ class AppStrings{
   static const String forgotPass= "Forgot Password?";
   static const String doNotHaveAnAcc= "Don't have an account? ";
   static const String signUp= "SignUp";
+  static const String userName= "Username";
+  static const String enterYourName= "Enter your name";
+  static const String confirmPass= "Confirm Password";
+  static const String alreadyHaveAnAcc= "Already Have an account? ";
+
+
+
+
+
 
 
 }
