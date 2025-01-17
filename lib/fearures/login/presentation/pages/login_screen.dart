@@ -68,6 +68,8 @@ class LoginScreen extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(top: 20.sp),
                       child: PrimaryButton(
+                        onClicked: (){
+                          context.go(AppRoutes.mainScreen);                        },
                         label: Text(AppStrings.signIn),
                         backgroundColor:
                             WidgetStatePropertyAll(AppColors.primary),
