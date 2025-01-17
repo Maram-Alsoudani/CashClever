@@ -11,6 +11,11 @@ class AppStrings{
   static const String enterYourName= "Enter your name";
   static const String confirmPass= "Confirm Password";
   static const String alreadyHaveAnAcc= "Already Have an account? ";
+  static const String home= "Home";
+  static const String transactions= "Transactions";
+  static const String budget= "Budget";
+  static const String profile= "Profile";
+
 
 
 
