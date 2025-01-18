@@ -6,6 +6,7 @@ class AppImages{
   static const String transactionIcon= "assets/images/transaction_icon.png";
   static const String budgetIcon= "assets/images/piechart_icon.png";
   static const String profileIcon= "assets/images/profile_icon.png";
-
+  static const String income= "assets/images/income.png";
+  static const String expenses= "assets/images/expenses.png";
 
 }
