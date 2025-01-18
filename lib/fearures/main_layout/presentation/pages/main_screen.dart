@@ -55,14 +55,14 @@ class _MainScreenState extends State<MainScreen> {
                       AssetImage(AppImages.homeIcon),
                       color: selectedIndex == 0
                           ? AppColors.primary
-                          : AppColors.lightGray,
+                          : AppColors.medGray,
                     ),
                     Text(AppStrings.home,
                         style: context.bodySmall.copyWith(
                           fontSize: 13.sp,
                           color: selectedIndex == 0
                               ? AppColors.primary
-                              : AppColors.lightGray,
+                              : AppColors.medGray,
                         ))
                   ],
                 )),
@@ -75,14 +75,14 @@ class _MainScreenState extends State<MainScreen> {
                       AssetImage(AppImages.transactionIcon),
                       color: selectedIndex == 1
                           ? AppColors.primary
-                          : AppColors.lightGray,
+                          : AppColors.medGray,
                     ),
                     Text(AppStrings.transactions,
                         style: context.bodySmall.copyWith(
                           fontSize: 13.sp,
                           color: selectedIndex == 1
                               ? AppColors.primary
-                              : AppColors.lightGray,
+                              : AppColors.medGray,
                         ))
                   ],
                 )),
@@ -96,14 +96,14 @@ class _MainScreenState extends State<MainScreen> {
                       AssetImage(AppImages.budgetIcon),
                       color: selectedIndex == 2
                           ? AppColors.primary
-                          : AppColors.lightGray,
+                          : AppColors.medGray,
                     ),
                     Text(AppStrings.budget,
                         style: context.bodySmall.copyWith(
                           fontSize: 13.sp,
                           color: selectedIndex == 2
                               ? AppColors.primary
-                              : AppColors.lightGray,
+                              : AppColors.medGray,
                         )),
                   ],
                 )),
@@ -116,14 +116,14 @@ class _MainScreenState extends State<MainScreen> {
                       AssetImage(AppImages.profileIcon),
                       color: selectedIndex == 3
                           ? AppColors.primary
-                          : AppColors.lightGray,
+                          : AppColors.medGray,
                     ),
                     Text(AppStrings.profile,
                         style: context.bodySmall.copyWith(
                           fontSize: 13.sp,
                           color: selectedIndex == 3
                               ? AppColors.primary
-                              : AppColors.lightGray,
+                              : AppColors.medGray,
                         ))
                   ],
                 )),

@@ -23,6 +23,9 @@ class AppStrings{
   static const String week= "Week";
   static const String recentTransactions= "Recent Transactions";
   static const String viewAll= "view all";
+  static const String all= "All";
+  static const String incoming= "Incoming";
+
 
 
 
