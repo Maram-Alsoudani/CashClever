@@ -25,6 +25,8 @@ class AppStrings{
   static const String viewAll= "view all";
   static const String all= "All";
   static const String incoming= "Incoming";
+  static const String financialReport= "Financial Report";
+
 
 
 
