@@ -15,6 +15,18 @@ class AppStrings{
   static const String transactions= "Transactions";
   static const String budget= "Budget";
   static const String profile= "Profile";
+  static const String accountBalance= "Account Balance";
+  static const String income= "Income";
+  static const String expenses= "Expenses";
+  static const String today= "Today";
+  static const String month= "Month";
+  static const String week= "Week";
+  static const String recentTransactions= "Recent Transactions";
+  static const String viewAll= "view all";
+
+
+
+
 
 
 
