@@ -3,10 +3,10 @@ import 'package:finsage/core/utils/extentions/text_styles.dart';
 import 'package:finsage/core/utils/images.dart';
 import 'package:finsage/core/utils/strings.dart';
 import 'package:finsage/fearures/home/presentation/pages/home_tab.dart';
-import 'package:finsage/fearures/profile/presentation/pages/profile_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../budget/presentation/pages/budget_tab.dart';
+import '../../../settings/presentation/pages/settings_tab.dart';
 import '../../../transactions/presentation/pages/transaction_tab.dart';
 
 class MainScreen extends StatefulWidget {
@@ -18,7 +18,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   int selectedIndex = 0;
-  List<Widget> tabs = [HomeTab(), TransactionTab(), BudgetTab(), ProfileTab()];
+  List<Widget> tabs = [HomeTab(), TransactionTab(), BudgetTab(), SettingsTab()];
 
   onItemTapped(int index) {
     setState(() {
@@ -54,14 +54,14 @@ class _MainScreenState extends State<MainScreen> {
                     ImageIcon(
                       AssetImage(AppImages.homeIcon),
                       color: selectedIndex == 0
-                          ? AppColors.primary
+                          ? AppColors.lightBlue
                           : AppColors.medGray,
                     ),
                     Text(AppStrings.home,
                         style: context.bodySmall.copyWith(
                           fontSize: 13.sp,
                           color: selectedIndex == 0
-                              ? AppColors.primary
+                              ? AppColors.lightBlue
                               : AppColors.medGray,
                         ))
                   ],
@@ -74,14 +74,14 @@ class _MainScreenState extends State<MainScreen> {
                     ImageIcon(
                       AssetImage(AppImages.transactionIcon),
                       color: selectedIndex == 1
-                          ? AppColors.primary
+                          ? AppColors.lightBlue
                           : AppColors.medGray,
                     ),
                     Text(AppStrings.transactions,
                         style: context.bodySmall.copyWith(
                           fontSize: 13.sp,
                           color: selectedIndex == 1
-                              ? AppColors.primary
+                              ? AppColors.lightBlue
                               : AppColors.medGray,
                         ))
                   ],
@@ -95,14 +95,14 @@ class _MainScreenState extends State<MainScreen> {
                     ImageIcon(
                       AssetImage(AppImages.budgetIcon),
                       color: selectedIndex == 2
-                          ? AppColors.primary
+                          ? AppColors.lightBlue
                           : AppColors.medGray,
                     ),
                     Text(AppStrings.budget,
                         style: context.bodySmall.copyWith(
                           fontSize: 13.sp,
                           color: selectedIndex == 2
-                              ? AppColors.primary
+                              ? AppColors.lightBlue
                               : AppColors.medGray,
                         )),
                   ],
@@ -112,17 +112,18 @@ class _MainScreenState extends State<MainScreen> {
                 icon: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ImageIcon(
-                      AssetImage(AppImages.profileIcon),
+                    Icon(
+                      Icons.settings,
+                      size: 32,
                       color: selectedIndex == 3
-                          ? AppColors.primary
+                          ? AppColors.lightBlue
                           : AppColors.medGray,
                     ),
-                    Text(AppStrings.profile,
+                    Text(AppStrings.settings,
                         style: context.bodySmall.copyWith(
                           fontSize: 13.sp,
                           color: selectedIndex == 3
-                              ? AppColors.primary
+                              ? AppColors.lightBlue
                               : AppColors.medGray,
                         ))
                   ],

@@ -14,15 +14,14 @@ class PrimaryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ButtonStyle(
-
           padding:
-              WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 10.sp)),
+              WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 13.sp)),
           backgroundColor:
               backgroundColor ?? WidgetStatePropertyAll(AppColors.babyPink),
           foregroundColor: WidgetStatePropertyAll(AppColors.white),
-          textStyle: WidgetStatePropertyAll(context.bodyLarge.copyWith(fontWeight: FontWeight.bold, fontSize: 24)),
+          textStyle: WidgetStatePropertyAll(context.bodyMedium.copyWith(color: AppColors.white, fontSize: 20)),
           shape: WidgetStatePropertyAll(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16))),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r))),
         ),
         onPressed: onClicked,
         child: label);

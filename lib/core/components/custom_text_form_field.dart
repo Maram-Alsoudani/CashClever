@@ -62,14 +62,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         keyboardType: widget.keyboardType,
         validator: widget.validator,
         obscureText: _isSecured,
-        cursorColor: AppColors.black,
+        cursorColor: AppColors.primary,
         style: context.bodyMedium,
         onChanged: widget.onChanged,
         decoration: InputDecoration(
           filled: widget.filled?? false,
           fillColor: widget.filledColor,
           hintText: widget.hint,
-          hintStyle:context.bodyMedium.copyWith(color: AppColors.medGray),
+          hintStyle:context.bodyMedium.copyWith(color: AppColors.medGray, fontSize: 16),
           suffixIcon: widget.isSecured == true
               ? IconButton(
             onPressed: () {
@@ -84,9 +84,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           )
               : widget.suffixIcon,
           enabledBorder: OutlineInputBorder(
-            borderRadius: widget.borderRadius ?? BorderRadius.circular(8.r),
+            borderRadius: widget.borderRadius ?? BorderRadius.circular(4.r),
             borderSide: BorderSide(
-              width: 1.5,
+              width: 0.7,
               color: widget.enabledBorderColor ?? AppColors.white,
             ),
           ),
@@ -98,7 +98,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: widget.borderRadius ?? BorderRadius.circular(8.r),
+            borderRadius: widget.borderRadius ?? BorderRadius.circular(4.r),
             borderSide: BorderSide(
               width: 1.5.w,
               color: widget.focusedBorderColor ?? AppColors.darkGray,

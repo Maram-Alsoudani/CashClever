@@ -1,3 +1,4 @@
+import 'package:finsage/core/components/custom_tab_bar.dart';
 import 'package:finsage/core/utils/colors.dart';
 import 'package:finsage/core/utils/extentions/text_styles.dart';
 import 'package:finsage/core/utils/strings.dart';
@@ -23,7 +24,7 @@ class _BudgetTabState extends State<BudgetTab> {
           centerTitle: true,
           title: Text(
             AppStrings.financialReport,
-            style: context.headlineMedium.copyWith(fontSize: 24.sp),
+            style: context.headlineMedium.copyWith(fontSize: 24.sp, color: AppColors.primary),
           ),
         ),
         body: SingleChildScrollView(
@@ -38,29 +39,29 @@ class _BudgetTabState extends State<BudgetTab> {
                   height: 200.h,
                   child: PieChart(
                       PieChartData(
-                        sectionsSpace: 0.sp,
-                    centerSpaceRadius: 0.sp,
-                    sections: [
-                      PieChartSectionData(
-                        radius: 120.r,
-                        value: 10,
-                        color: AppColors.yellow
-                      ),
-                      PieChartSectionData(
-                          radius: 120.r,
-                          value: 20,
-                          color: AppColors.primary
-          
-                      ),
-                      PieChartSectionData(
-                          radius: 120.r,
-                          value: 80,
-                          color: AppColors.lightRedColor
-          
-                      )
-                    ]
-                  )),
-          
+                          sectionsSpace: 0.sp,
+                          centerSpaceRadius: 0.sp,
+                          sections: [
+                            PieChartSectionData(
+                                radius: 120.r,
+                                value: 10,
+                                color: AppColors.yellow
+                            ),
+                            PieChartSectionData(
+                                radius: 120.r,
+                                value: 20,
+                                color: AppColors.primary
+
+                            ),
+                            PieChartSectionData(
+                                radius: 120.r,
+                                value: 80,
+                                color: AppColors.lightRedColor
+
+                            )
+                          ]
+                      )),
+
                 ),
                 Container(
                   width: double.infinity,
@@ -68,23 +69,9 @@ class _BudgetTabState extends State<BudgetTab> {
                   margin: EdgeInsets.all(20.sp),
                   decoration: BoxDecoration(
                     color: AppColors.lightGray,
-                    borderRadius: BorderRadius.circular(10.r),
+                    borderRadius: BorderRadius.circular(30.r),
                   ),
-                  child: TabBar(
-                    dividerColor: Colors.transparent,
-                    labelPadding: EdgeInsets.all(0.sp),
-                    labelStyle:
-                    context.bodySmall.copyWith(color: AppColors.black),
-                    labelColor: AppColors.white,
-                    indicator: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(15.r),
-                    ),
-                    tabs: [
-                      Center(child: Tab(text: AppStrings.expenses)),
-                      Center(child: Tab(text: AppStrings.income)),
-                    ],
-                  ),
+                  child:CustomTabBar(labels: ["Expenses", "Income"]),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
@@ -113,5 +100,4 @@ class _BudgetTabState extends State<BudgetTab> {
         ),
       ),
     );
-  }
-}
+  }}

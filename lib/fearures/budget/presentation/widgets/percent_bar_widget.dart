@@ -27,14 +27,14 @@ class PercentBarWidget extends StatelessWidget {
             Spacer(),
             Padding(
               padding:  EdgeInsets.only(right: 8.0.sp),
-              child: Text(amount, style: context.headlineMedium,),
+              child: Text(amount, style: context.bodyLarge,),
             )
           ],),
         LinearPercentIndicator(
           padding: EdgeInsets.symmetric(horizontal: 0.sp),
           backgroundColor: AppColors.lightGray,
-          width: 320.w,
-          lineHeight: 15.h,
+          width: 325.w,
+          lineHeight: 12.h,
           barRadius: Radius.circular(20.r),
           percent: percent,
           progressColor: AppColors.yellow,
