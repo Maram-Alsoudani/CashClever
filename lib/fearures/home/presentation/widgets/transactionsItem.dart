@@ -29,8 +29,8 @@ class TransactionsItem extends StatelessWidget {
       ),
       child: Row(children: [
         Container(
-          width: 50.w,
-          height: 50.h,
+          width: 30.w,
+          height: 30.h,
           margin: EdgeInsets.only(right: 10.sp),
           decoration: BoxDecoration(
               color: type=='income'?AppColors.green : AppColors.lightRedColor,
@@ -41,7 +41,9 @@ class TransactionsItem extends StatelessWidget {
             Icons.arrow_upward : Icons.arrow_downward
             , color: AppColors.white,),
         ),
-        Text("$amount EGP", style: context.bodyLarge,),
+        Text("$amount EGP", style: context.bodyLarge.copyWith(
+          color: type=='income'?AppColors.black : AppColors.lightRedColor,
+        ),),
         Spacer(),
         Text(type, style: context.bodyMedium.copyWith(color: AppColors.medGray),)
       ],),

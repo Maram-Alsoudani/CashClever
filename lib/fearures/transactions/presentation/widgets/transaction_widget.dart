@@ -34,13 +34,15 @@ class TransactionWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(category, style: context.bodyMedium,),
-              Text(description, style: context.bodySmall,),
+              Text(description, style: context.bodySmall.copyWith(
+                fontWeight: FontWeight.w400
+              ),),
             ],),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(amount, style: context.bodyMedium,),
+              Text(amount, style: context.bodyMedium.copyWith(color: AppColors.red),),
               Text(date, style: context.bodySmall,),
             ],)
         ],),

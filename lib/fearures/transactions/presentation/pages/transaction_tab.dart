@@ -1,3 +1,4 @@
+import 'package:finsage/core/components/custom_tab_bar.dart';
 import 'package:finsage/core/utils/extentions/text_styles.dart';
 import 'package:finsage/core/utils/strings.dart';
 import 'package:finsage/fearures/transactions/presentation/widgets/transaction_widget.dart';
@@ -35,24 +36,13 @@ class TransactionTab extends StatelessWidget {
                 margin: EdgeInsets.all(20.sp),
                 decoration: BoxDecoration(
                   color: AppColors.lightGray,
-                  borderRadius: BorderRadius.circular(10.r),
+                  borderRadius: BorderRadius.circular(30.r),
                 ),
-                child: TabBar(
-                  dividerColor: Colors.transparent,
-                  labelPadding: EdgeInsets.all(0.sp),
-                  labelStyle:
-                      context.bodySmall.copyWith(color: AppColors.black),
-                  labelColor: AppColors.white,
-                  indicator: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(15.r),
-                  ),
-                  tabs: [
-                    Center(child: Tab(text: AppStrings.all)),
-                    Center(child: Tab(text: AppStrings.incoming)),
-                    Center(child: Tab(text: AppStrings.expenses)),
-                  ],
-                ),
+                child: CustomTabBar(labels: [
+                  AppStrings.all,
+                  AppStrings.incoming,
+                  AppStrings.expenses
+                ]),
               ),
               Expanded(
                 child: ListView.builder(

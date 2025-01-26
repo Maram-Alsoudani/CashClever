@@ -1,23 +1,22 @@
+import 'package:finsage/config/routes.dart';
+import 'package:finsage/core/components/custom_text_form_field.dart';
+import 'package:finsage/core/components/primary_button.dart';
+import 'package:finsage/core/components/validators.dart';
+import 'package:finsage/core/utils/colors.dart';
 import 'package:finsage/core/utils/extentions/text_styles.dart';
+import 'package:finsage/core/utils/images.dart';
+import 'package:finsage/core/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../config/routes.dart';
-import '../../../../core/components/custom_text_form_field.dart';
-import '../../../../core/components/primary_button.dart';
-import '../../../../core/components/validators.dart';
-import '../../../../core/utils/colors.dart';
-import '../../../../core/utils/images.dart';
-import '../../../../core/utils/strings.dart';
-
 class RegisterScreen extends StatelessWidget {
-  TextEditingController userNameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
-
   RegisterScreen({super.key});
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -25,25 +24,39 @@ class RegisterScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
-            left: 30.sp,
-            right: 30.sp,
-            top: 90.sp,
+            left: 16.sp,
+            right: 16.sp,
+            top: 82.sp,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image(
-                image: AssetImage(AppImages.user),
-                width: 100.w,
-                height: 100.h,
-              ),
-              Text(AppStrings.signUp,
-                  style: context.headlineLarge
-                      .copyWith(fontWeight: FontWeight.w400)),
-              Divider(
-                color: AppColors.medGray,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Image.asset(AppImages.logo, width: 64.w, height: 64.h,),
+                  ),
+                  Text(AppStrings.appName,
+                    style: context.headlineLarge.copyWith(
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.bold,
+
+                    ),)
+                ],
               ),
               SizedBox(
-                height: 20.h,
+                height: 40.h,
+              ),
+              Text(AppStrings.signUp,
+                  style: context.headlineMedium
+                      .copyWith(
+                      fontSize: 26,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.primary)),
+              SizedBox(
+                height: 24.h,
               ),
               Form(
                 child: Column(
@@ -51,51 +64,61 @@ class RegisterScreen extends StatelessWidget {
                   children: [
                     Text(
                       AppStrings.userName,
-                      style: context.bodyLarge,
+                      style: context.bodyLarge.copyWith(color: AppColors.primary, fontWeight: FontWeight.w500, fontSize: 18),
                     ),
                     CustomTextFormField(
-                        enabledBorderColor: AppColors.darkGray,
+                        enabledBorderColor: AppColors.lightGray,
+                        focusedBorderColor: AppColors.primary,
                         hint: AppStrings.enterYourName,
                         validator: (val) => AppValidators.validateUsername(val),
-                        controller: userNameController),
+                        controller: emailController),
+                    SizedBox(height: 20,),
                     Text(
                       AppStrings.email,
-                      style: context.bodyLarge,
+                      style: context.bodyLarge.copyWith(color: AppColors.primary, fontWeight: FontWeight.w500, fontSize: 18),
                     ),
                     CustomTextFormField(
-                        enabledBorderColor: AppColors.darkGray,
+                        enabledBorderColor: AppColors.lightGray,
+                        focusedBorderColor: AppColors.primary,
                         hint: AppStrings.enterYorEmail,
                         validator: (val) => AppValidators.validateEmail(val),
                         controller: emailController),
+                    SizedBox(height: 20,),
                     Text(
                       AppStrings.password,
-                      style: context.bodyLarge,
+                      style: context.bodyLarge.copyWith(color: AppColors.primary, fontWeight: FontWeight.w500, fontSize: 18),
                     ),
                     CustomTextFormField(
                         isSecured: true,
-                        enabledBorderColor: AppColors.darkGray,
+                        enabledBorderColor: AppColors.lightGray,
+                        focusedBorderColor: AppColors.primary,
                         hint: AppStrings.enterYorPass,
                         validator: (val) => AppValidators.validatePassword(val),
                         controller: passwordController),
+                    SizedBox(height: 20,),
                     Text(
                       AppStrings.confirmPass,
-                      style: context.bodyLarge,
+                      style: context.bodyLarge.copyWith(color: AppColors.primary, fontWeight: FontWeight.w500, fontSize: 18),
                     ),
                     CustomTextFormField(
                         isSecured: true,
-                        enabledBorderColor: AppColors.darkGray,
-                        hint: AppStrings.confirmPass,
+                        enabledBorderColor: AppColors.lightGray,
+                        focusedBorderColor: AppColors.primary,
+                        hint: AppStrings.enterYorEmail,
                         validator: (val) => AppValidators.validateConfirmPassword(val, passwordController.text),
-                        controller: confirmPasswordController),
+                        controller: emailController),
+
                     Padding(
-                      padding: EdgeInsets.only(top: 20.sp),
+                      padding: EdgeInsets.only(top: 25.sp, bottom: 10.sp),
                       child: PrimaryButton(
+                        onClicked: (){
+                          context.go(AppRoutes.mainScreen);                        },
                         label: Text(AppStrings.signUp),
                         backgroundColor:
                         WidgetStatePropertyAll(AppColors.primary),
                       ),
                     ),
-                    SizedBox(height: 25.h,),
+
                     InkWell(
                       onTap: (){
                         context.go(AppRoutes.loginScreen);
@@ -104,11 +127,16 @@ class RegisterScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(AppStrings.alreadyHaveAnAcc,
-                              style: context.bodySmall),
+                            style:  context.bodySmall.copyWith(
+                                color: AppColors.primary, fontWeight: FontWeight.w400
+                            ),),
                           Text(
                             AppStrings.signIn,
-                            style: context.bodySmall
-                                .copyWith(decoration: TextDecoration.underline),
+                            style:  context.bodySmall.copyWith(
+                                decoration: TextDecoration.underline,
+                                decorationColor: Colors.orange,
+                                color: AppColors.orange, fontWeight: FontWeight.w400
+                            ),
                           ),
                         ],
                       ),

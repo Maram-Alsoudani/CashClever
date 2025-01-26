@@ -22,25 +22,39 @@ class LoginScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(
-            left: 30.sp,
-            right: 30.sp,
-            top: 130.sp,
+            left: 16.sp,
+            right: 16.sp,
+            top: 82.sp,
           ),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image(
-                image: AssetImage(AppImages.user),
-                width: 100.w,
-                height: 100.h,
-              ),
-              Text(AppStrings.signIn,
-                  style: context.headlineLarge
-                      .copyWith(fontWeight: FontWeight.w400)),
-              Divider(
-                color: AppColors.medGray,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Image.asset(AppImages.logo, width: 64.w, height: 64.h,),
+                  ),
+                  Text(AppStrings.appName,
+                    style: context.headlineLarge.copyWith(
+                      color: AppColors.primary,
+                      fontWeight: FontWeight.bold,
+
+                    ),)
+                ],
               ),
               SizedBox(
-                height: 20.h,
+                height: 40.h,
+              ),
+              Text(AppStrings.signIn,
+                  style: context.headlineMedium
+                      .copyWith(
+                    fontSize: 26,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.primary)),
+              SizedBox(
+                height: 24.h,
               ),
               Form(
                 child: Column(
@@ -48,25 +62,42 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     Text(
                       AppStrings.email,
-                      style: context.bodyLarge,
+                      style: context.bodyLarge.copyWith(color: AppColors.primary, fontWeight: FontWeight.w500, fontSize: 18),
                     ),
                     CustomTextFormField(
-                        enabledBorderColor: AppColors.darkGray,
+                        enabledBorderColor: AppColors.lightGray,
+                        focusedBorderColor: AppColors.primary,
                         hint: AppStrings.enterYorEmail,
                         validator: (val) => AppValidators.validateEmail(val),
                         controller: emailController),
+                    SizedBox(height: 20,),
                     Text(
                       AppStrings.password,
-                      style: context.bodyLarge,
+                      style: context.bodyLarge.copyWith(color: AppColors.primary, fontWeight: FontWeight.w500, fontSize: 18),
                     ),
                     CustomTextFormField(
                         isSecured: true,
-                        enabledBorderColor: AppColors.darkGray,
+                        enabledBorderColor: AppColors.lightGray,
+                        focusedBorderColor: AppColors.primary,
                         hint: AppStrings.enterYorPass,
                         validator: (val) => AppValidators.validatePassword(val),
                         controller: passwordController),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            AppStrings.forgotPass,
+                            style: context.bodySmall.copyWith(
+                                decoration: TextDecoration.underline,
+                                decorationColor: Colors.orange,
+                                color: AppColors.orange, fontWeight: FontWeight.w400
+                            ),
+                          )),
+                    ),
+
                     Padding(
-                      padding: EdgeInsets.only(top: 20.sp),
+                      padding: EdgeInsets.only(top: 56.sp, bottom: 10.sp),
                       child: PrimaryButton(
                         onClicked: (){
                           context.go(AppRoutes.mainScreen);                        },
@@ -75,16 +106,7 @@ class LoginScreen extends StatelessWidget {
                             WidgetStatePropertyAll(AppColors.primary),
                       ),
                     ),
-                    TextButton(
-                        onPressed: () {},
-                        child: Text(
-                          AppStrings.forgotPass,
-                          style: context.bodySmall,
-                          textAlign: TextAlign.center,
-                        )),
-                    SizedBox(
-                      height: 130.h,
-                    ),
+
                     InkWell(
                       onTap: (){
                         context.go(AppRoutes.registerScreen);
@@ -93,11 +115,16 @@ class LoginScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(AppStrings.doNotHaveAnAcc,
-                              style: context.bodySmall),
+                              style:  context.bodySmall.copyWith(
+                                  color: AppColors.primary, fontWeight: FontWeight.w400
+                              ),),
                           Text(
                             AppStrings.signUp,
-                            style: context.bodySmall
-                                .copyWith(decoration: TextDecoration.underline),
+                            style:  context.bodySmall.copyWith(
+                                decoration: TextDecoration.underline,
+                                decorationColor: Colors.orange,
+                                color: AppColors.orange, fontWeight: FontWeight.w400
+                            ),
                           ),
                         ],
                       ),
