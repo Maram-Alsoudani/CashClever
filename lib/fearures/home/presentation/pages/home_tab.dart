@@ -1,3 +1,4 @@
+import 'package:finsage/config/routes.dart';
 import 'package:finsage/core/components/custom_tab_bar.dart';
 import 'package:finsage/core/utils/colors.dart';
 import 'package:finsage/core/utils/extentions/text_styles.dart';
@@ -5,6 +6,7 @@ import 'package:finsage/core/utils/images.dart';
 import 'package:finsage/core/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../widgets/transactionsItem.dart';
 
@@ -163,7 +165,9 @@ class HomeTab extends StatelessWidget {
                         Text(AppStrings.recentTransactions,
                           style: context.bodyMedium.copyWith(color: AppColors.medGray),),
                         TextButton(
-                          onPressed: (){} ,
+                          onPressed: (){
+                            context.go(AppRoutes.transactionTab);
+                          } ,
                           child: Text(
                               AppStrings.viewAll,
                               style: context.bodySmall.copyWith(

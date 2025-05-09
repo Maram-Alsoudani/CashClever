@@ -86,7 +86,7 @@ class _SettingsTabState extends State<SettingsTab> {
             ),
             TextButton(onPressed: (){},
                 child: Align(
-                  alignment: Alignment.topLeft,
+                  alignment: Alignment.topCenter,
                   child: Text(
                     "Logout", style: context.bodyMedium.copyWith(color: AppColors.orange),),
                 )
