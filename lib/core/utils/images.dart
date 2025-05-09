@@ -10,6 +10,18 @@ class AppImages{
   static const String notification= "assets/images/notification.png";
   static const String language= "assets/images/language.png";
   static const String mode= "assets/images/mode.png";
+  static const String food= "assets/images/food.png";
+  static const String social= "assets/images/social.png";
+  static const String rentals= "assets/images/rentals.png";
+  static const String traffic= "assets/images/traffic.png";
+  static const String education= "assets/images/education.png";
+  static const String investments= "assets/images/investments.png";
+  static const String gift= "assets/images/gift.png";
+  static const String grocery= "assets/images/grocery.png";
+  static const String shopping= "assets/images/shopping.png";
+  static const String medical= "assets/images/medical.png";
+  static const String other= "assets/images/other.png";
+  static const String bill= "assets/images/bill.png";
 
 
 

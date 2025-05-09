@@ -31,6 +31,17 @@ class AppStrings{
   static const String darkMode= "Dark Mode";
   static const String notification= "Notification";
   static const String language= "Language";
+  static const String newTransaction= "New Transaction";
+  static const String category= "Category";
+  static const String date= "Date";
+  static const String notes= "Notes";
+  static const String save= "Save";
+
+
+
+
+
+
 
 
 

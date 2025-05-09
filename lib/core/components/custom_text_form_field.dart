@@ -19,6 +19,8 @@ class CustomTextFormField extends StatefulWidget {
   final Color? focusedBorderColor;
   final Color? errorBorderColor;
   final Function(String)? onChanged;
+  final int? minLines;
+  final int? maxLines;
 
   const CustomTextFormField({
     super.key,
@@ -36,7 +38,10 @@ class CustomTextFormField extends StatefulWidget {
     this.errorBorderColor,
     this.onChanged,
     this.filled,
-    this.filledColor
+    this.filledColor,
+    this.minLines,
+    this.maxLines,
+
   });
 
   @override
@@ -57,6 +62,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return Padding(
       padding:  EdgeInsets.symmetric(vertical: 8.0.sp),
       child: TextFormField(
+
         enabled: widget.enable,
         controller: widget.controller,
         keyboardType: widget.keyboardType,
@@ -65,6 +71,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         cursorColor: AppColors.primary,
         style: context.bodyMedium,
         onChanged: widget.onChanged,
+        minLines:widget.minLines ,
+        maxLines:widget.maxLines?? 1 ,
         decoration: InputDecoration(
           filled: widget.filled?? false,
           fillColor: widget.filledColor,
