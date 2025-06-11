@@ -1,8 +1,8 @@
 import 'package:finsage/fearures/create_transaction/presentation/pages/categories_screen.dart';
 import 'package:finsage/fearures/create_transaction/presentation/pages/new_transaction_screen.dart';
-import 'package:finsage/fearures/login/presentation/pages/login_screen.dart';
+import 'package:finsage/fearures/auth/presentation/pages/login_screen.dart';
 import 'package:finsage/fearures/main_layout/presentation/pages/main_screen.dart';
-import 'package:finsage/fearures/register/presentation/pages/register_screen.dart';
+import 'package:finsage/fearures/auth/presentation/pages/register_screen.dart';
 import 'package:finsage/fearures/transactions/presentation/pages/transaction_tab.dart';
 import 'package:go_router/go_router.dart';
 
