@@ -70,7 +70,7 @@ class AuthDataSourceImpl implements AuthDataSource {
           await FirebaseUtils.getUser(credential.user?.uid ?? "User Not Found");
       if (userDoc != null) {
         await SharedPrefs.setData(
-          key: credential.user!.uid,
+          key: "LoggedInUser",
           value: userDoc.toJson(),
         );
       } else {

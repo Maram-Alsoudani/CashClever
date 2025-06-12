@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:CashClever/fearures/auth/data/models/user_dto.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefs {
@@ -23,9 +24,15 @@ class SharedPrefs {
     return prefs.setString(key, jsonEncode(value));
   }
 
-  static Object? getDate({required String key}){
-    return prefs.get(key);
+  static UserDTO? getData({required String key}) {
+    final String? userJson = prefs.getString(key);
+    if (userJson != null) {
+      final Map<String, dynamic> userMap = jsonDecode(userJson);
+      return UserDTO.fromJson(userMap);
+    }
+    return null;
   }
+
   static Future<bool> removeData(String key) async {
     return await prefs.remove(key);
   }

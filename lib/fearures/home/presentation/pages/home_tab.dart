@@ -1,17 +1,36 @@
 import 'package:CashClever/config/routes.dart';
+import 'package:CashClever/core/cache/shared_preferences.dart';
 import 'package:CashClever/core/components/custom_tab_bar.dart';
 import 'package:CashClever/core/utils/colors.dart';
 import 'package:CashClever/core/utils/extentions/text_styles.dart';
 import 'package:CashClever/core/utils/images.dart';
 import 'package:CashClever/core/utils/strings.dart';
+import 'package:CashClever/fearures/auth/data/models/user_dto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import '../widgets/my_custom_clipper.dart';
 import '../widgets/transactionsItem.dart';
 
-class HomeTab extends StatelessWidget {
+class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
+
+  @override
+  State<HomeTab> createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<HomeTab> {
+late UserDTO user;
+  @override
+  void initState() {
+    super.initState();
+    var prefsUser= SharedPrefs.getData(key: "LoggedInUser");
+    if(prefsUser !=null){
+      user= prefsUser;
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -44,7 +63,7 @@ class HomeTab extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.symmetric(vertical: 20.sp),
                         child: Text(
-                          "500.0 EGP",
+                          "${user.balance} EGP",
                           style: context.headlineLarge.copyWith(color: AppColors.white),
                         ),
                       ),
@@ -82,7 +101,7 @@ class HomeTab extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      "2500",
+                                      "${user.income}",
                                       style: context.bodyMedium.copyWith(
                                         color: AppColors.medGray,
                                         fontWeight: FontWeight.bold,
@@ -124,7 +143,7 @@ class HomeTab extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      "2500",
+                                      "${user.expenses}",
                                       style: context.bodyMedium.copyWith(
                                         color: AppColors.medGray,
                                         fontWeight: FontWeight.bold,
@@ -150,7 +169,6 @@ class HomeTab extends StatelessWidget {
                         border: Border.all(width: 1, color: AppColors.medGray)
                     ),
                     child: CustomTabBar(
-
                         labels: [
                       AppStrings.today,
                       AppStrings.week,
@@ -199,39 +217,7 @@ class HomeTab extends StatelessWidget {
       ),
     );
   }
+
 }
 
-class MyCustomClipper extends CustomClipper<Path> {
-  @override
-  Path getClip(Size size) {
-    Path path = Path();
-    path.lineTo(0, size.height - 20);
-    path.quadraticBezierTo(
-      size.width / 6,
-      size.height - 40,
-      size.width / 3,
-      size.height - 20,
-    );
-    path.quadraticBezierTo(
-      size.width / 2,
-      size.height,
-      2 * size.width / 3,
-      size.height - 20,
-    );
-    path.quadraticBezierTo(
-      5 * size.width / 6,
-      size.height - 40,
-      size.width,
-      size.height - 20,
-    );
-    path.lineTo(size.width, 0);
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    return false; // No need to reclip in this example
-  }
-}
 
