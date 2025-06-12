@@ -1,4 +1,4 @@
-import 'package:finsage/core/utils/extentions/text_styles.dart';
+import 'package:CashClever/core/utils/extentions/text_styles.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../../../../core/components/custom_text_form_field.dart';

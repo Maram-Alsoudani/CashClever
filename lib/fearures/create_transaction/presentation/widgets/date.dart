@@ -1,4 +1,4 @@
-import 'package:finsage/core/utils/extentions/text_styles.dart';
+import 'package:CashClever/core/utils/extentions/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

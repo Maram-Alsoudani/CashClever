@@ -1,15 +1,15 @@
-import 'package:finsage/config/routes.dart';
-import 'package:finsage/core/components/custom_text_form_field.dart';
-import 'package:finsage/core/components/primary_button.dart';
-import 'package:finsage/core/components/validators.dart';
-import 'package:finsage/core/dependency_injection.dart';
-import 'package:finsage/core/utils/colors.dart';
-import 'package:finsage/core/utils/dialog_utils.dart';
-import 'package:finsage/core/utils/extentions/text_styles.dart';
-import 'package:finsage/core/utils/images.dart';
-import 'package:finsage/core/utils/strings.dart';
-import 'package:finsage/fearures/auth/presentation/manager/auth_states.dart';
-import 'package:finsage/fearures/auth/presentation/manager/login_view_model.dart';
+import 'package:CashClever/config/routes.dart';
+import 'package:CashClever/core/components/custom_text_form_field.dart';
+import 'package:CashClever/core/components/primary_button.dart';
+import 'package:CashClever/core/components/validators.dart';
+import 'package:CashClever/core/dependency_injection.dart';
+import 'package:CashClever/core/utils/colors.dart';
+import 'package:CashClever/core/utils/dialog_utils.dart';
+import 'package:CashClever/core/utils/extentions/text_styles.dart';
+import 'package:CashClever/core/utils/images.dart';
+import 'package:CashClever/core/utils/strings.dart';
+import 'package:CashClever/fearures/auth/presentation/manager/auth_states.dart';
+import 'package:CashClever/fearures/auth/presentation/manager/login_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +30,7 @@ LoginViewModel viewModel= getIt<LoginViewModel>();
               context: context,
               message: state.failure.errorMessage,
             title: "failed",
-            posActionName: "ok"
+            posActionName: "Close"
           );
         }else if(state is AuthSuccessState){
           context.go(AppRoutes.mainScreen);
@@ -101,12 +101,14 @@ LoginViewModel viewModel= getIt<LoginViewModel>();
                             enabledBorderColor: AppColors.lightGray,
                             focusedBorderColor: AppColors.primary,
                             hint: AppStrings.enterYorPass,
-                            validator: (val) => AppValidators.validatePassword(val),
+                            validator: (val) => AppValidators.validateLoginPassword(val),
                             controller: viewModel.passwordController),
                         Align(
                           alignment: Alignment.bottomRight,
                           child: TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                context.go(AppRoutes.resetPassScreen);
+                              },
                               child: Text(
                                 AppStrings.forgotPass,
                                 style: context.bodySmall.copyWith(

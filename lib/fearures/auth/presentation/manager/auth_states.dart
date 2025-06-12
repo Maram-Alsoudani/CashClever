@@ -1,4 +1,4 @@
-import 'package:finsage/core/errors/failures.dart';
+import 'package:CashClever/core/errors/failures.dart';
 
 abstract class AuthStates{}
 class AuthInitialState extends AuthStates{}

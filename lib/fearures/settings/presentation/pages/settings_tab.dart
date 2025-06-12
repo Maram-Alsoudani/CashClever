@@ -1,5 +1,5 @@
-import 'package:finsage/core/utils/extentions/text_styles.dart';
-import 'package:finsage/core/utils/images.dart';
+import 'package:CashClever/core/utils/extentions/text_styles.dart';
+import 'package:CashClever/core/utils/images.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/colors.dart';

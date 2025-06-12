@@ -1,9 +1,9 @@
-import 'package:finsage/config/routes.dart';
-import 'package:finsage/core/utils/colors.dart';
-import 'package:finsage/core/utils/extentions/text_styles.dart';
-import 'package:finsage/core/utils/images.dart';
-import 'package:finsage/core/utils/strings.dart';
-import 'package:finsage/fearures/home/presentation/pages/home_tab.dart';
+import 'package:CashClever/config/routes.dart';
+import 'package:CashClever/core/utils/colors.dart';
+import 'package:CashClever/core/utils/extentions/text_styles.dart';
+import 'package:CashClever/core/utils/images.dart';
+import 'package:CashClever/core/utils/strings.dart';
+import 'package:CashClever/fearures/home/presentation/pages/home_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
