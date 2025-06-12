@@ -1,4 +1,4 @@
-import 'package:finsage/core/utils/extentions/text_styles.dart';
+import 'package:CashClever/core/utils/extentions/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/colors.dart';
@@ -74,6 +74,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         minLines:widget.minLines ,
         maxLines:widget.maxLines?? 1 ,
         decoration: InputDecoration(
+          errorMaxLines: 2,
           filled: widget.filled?? false,
           fillColor: widget.filledColor,
           hintText: widget.hint,

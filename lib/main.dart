@@ -1,18 +1,21 @@
-import 'package:finsage/config/routes.dart';
-import 'package:finsage/config/theming.dart';
-import 'package:finsage/core/cache/shared_preferences.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'bloc_observer.dart';
+import 'config/routes.dart';
+import 'config/theming.dart';
+import 'core/cache/shared_preferences.dart';
 import 'core/dependency_injection.dart';
-
 
 void main() async {
   configureDependencies();
   WidgetsFlutterBinding.ensureInitialized();
- SharedPrefs.init();
+  Bloc.observer = MyBlocObserver();
+
+  SharedPrefs.init();
   await Firebase.initializeApp(
   );
 

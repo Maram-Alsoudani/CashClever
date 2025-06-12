@@ -1,6 +1,6 @@
-import 'package:finsage/core/components/primary_button.dart';
-import 'package:finsage/core/utils/extentions/text_styles.dart';
-import 'package:finsage/fearures/create_transaction/presentation/widgets/category_item_widget.dart';
+import 'package:CashClever/core/components/primary_button.dart';
+import 'package:CashClever/core/utils/extentions/text_styles.dart';
+import 'package:CashClever/fearures/create_transaction/presentation/widgets/category_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';

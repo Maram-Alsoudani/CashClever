@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:finsage/fearures/auth/data/models/user_dto.dart';
+import 'package:CashClever/fearures/auth/data/models/user_dto.dart';
 
 class FirebaseUtils{
   static FirebaseFirestore fireStore = FirebaseFirestore.instance;

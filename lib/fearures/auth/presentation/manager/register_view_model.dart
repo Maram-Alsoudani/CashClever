@@ -1,4 +1,4 @@
-import 'package:finsage/fearures/auth/domain/use_cases/register_use_case.dart';
+import 'package:CashClever/fearures/auth/domain/use_cases/register_use_case.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';

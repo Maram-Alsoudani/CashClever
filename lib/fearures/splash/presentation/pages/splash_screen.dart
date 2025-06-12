@@ -1,7 +1,7 @@
-import 'package:finsage/config/routes.dart';
-import 'package:finsage/core/utils/colors.dart';
-import 'package:finsage/core/utils/extentions/text_styles.dart';
-import 'package:finsage/core/utils/strings.dart';
+import 'package:CashClever/config/routes.dart';
+import 'package:CashClever/core/utils/colors.dart';
+import 'package:CashClever/core/utils/extentions/text_styles.dart';
+import 'package:CashClever/core/utils/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'dart:async';

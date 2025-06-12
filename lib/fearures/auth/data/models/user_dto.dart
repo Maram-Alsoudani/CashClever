@@ -1,4 +1,4 @@
-import 'package:finsage/fearures/auth/domain/entities/user_entity.dart';
+import 'package:CashClever/fearures/auth/domain/entities/user_entity.dart';
 
 class UserDTO extends UserEntity{
 

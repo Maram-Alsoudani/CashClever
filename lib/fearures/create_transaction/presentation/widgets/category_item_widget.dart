@@ -1,6 +1,6 @@
-import 'package:finsage/core/utils/colors.dart';
-import 'package:finsage/core/utils/extentions/text_styles.dart';
-import 'package:finsage/core/utils/images.dart';
+import 'package:CashClever/core/utils/colors.dart';
+import 'package:CashClever/core/utils/extentions/text_styles.dart';
+import 'package:CashClever/core/utils/images.dart';
 import 'package:flutter/material.dart';
 
 class CategoryItem extends StatefulWidget {

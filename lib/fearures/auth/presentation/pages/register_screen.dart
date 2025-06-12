@@ -1,14 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:finsage/config/routes.dart';
-import 'package:finsage/core/components/custom_text_form_field.dart';
-import 'package:finsage/core/components/primary_button.dart';
-import 'package:finsage/core/components/validators.dart';
-import 'package:finsage/core/utils/colors.dart';
-import 'package:finsage/core/utils/dialog_utils.dart';
-import 'package:finsage/core/utils/extentions/text_styles.dart';
-import 'package:finsage/core/utils/images.dart';
-import 'package:finsage/core/utils/strings.dart';
-import 'package:finsage/fearures/auth/presentation/manager/register_view_model.dart';
+import 'package:CashClever/config/routes.dart';
+import 'package:CashClever/core/components/custom_text_form_field.dart';
+import 'package:CashClever/core/components/primary_button.dart';
+import 'package:CashClever/core/components/validators.dart';
+import 'package:CashClever/core/utils/colors.dart';
+import 'package:CashClever/core/utils/dialog_utils.dart';
+import 'package:CashClever/core/utils/extentions/text_styles.dart';
+import 'package:CashClever/core/utils/images.dart';
+import 'package:CashClever/core/utils/strings.dart';
+import 'package:CashClever/fearures/auth/presentation/manager/register_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -31,7 +31,7 @@ class RegisterScreen extends StatelessWidget {
             title: "failed",
               context: context,
               message: state.failure.errorMessage,
-            posActionName: "OK"
+            posActionName: "Close"
           );
         }else if(state is AuthSuccessState){
           context.go(AppRoutes.loginScreen);

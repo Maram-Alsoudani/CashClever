@@ -1,8 +1,8 @@
-import 'package:finsage/core/components/custom_tab_bar.dart';
-import 'package:finsage/core/utils/colors.dart';
-import 'package:finsage/core/utils/extentions/text_styles.dart';
-import 'package:finsage/core/utils/strings.dart';
-import 'package:finsage/fearures/budget/presentation/widgets/percent_bar_widget.dart';
+import 'package:CashClever/core/components/custom_tab_bar.dart';
+import 'package:CashClever/core/utils/colors.dart';
+import 'package:CashClever/core/utils/extentions/text_styles.dart';
+import 'package:CashClever/core/utils/strings.dart';
+import 'package:CashClever/fearures/budget/presentation/widgets/percent_bar_widget.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
