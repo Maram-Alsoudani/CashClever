@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:CashClever/fearures/auth/data/models/user_dto.dart';
+import 'package:CashClever/fearures/auth/data/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefs {
@@ -24,11 +24,11 @@ class SharedPrefs {
     return prefs.setString(key, jsonEncode(value));
   }
 
-  static UserDTO? getData({required String key}) {
+  static UserModel? getData({required String key}) {
     final String? userJson = prefs.getString(key);
     if (userJson != null) {
       final Map<String, dynamic> userMap = jsonDecode(userJson);
-      return UserDTO.fromJson(userMap);
+      return UserModel.fromJson(userMap);
     }
     return null;
   }

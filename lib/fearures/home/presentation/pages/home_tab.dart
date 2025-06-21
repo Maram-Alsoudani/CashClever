@@ -5,10 +5,9 @@ import 'package:CashClever/core/utils/colors.dart';
 import 'package:CashClever/core/utils/extentions/text_styles.dart';
 import 'package:CashClever/core/utils/images.dart';
 import 'package:CashClever/core/utils/strings.dart';
-import 'package:CashClever/fearures/auth/data/models/user_dto.dart';
+import 'package:CashClever/fearures/auth/data/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 import '../widgets/my_custom_clipper.dart';
 import '../widgets/transactionsItem.dart';
@@ -21,7 +20,7 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-late UserDTO user;
+late UserModel user;
   @override
   void initState() {
     super.initState();
@@ -184,7 +183,7 @@ late UserDTO user;
                           style: context.bodyMedium.copyWith(color: AppColors.medGray),),
                         TextButton(
                           onPressed: (){
-                            context.go(AppRoutes.transactionTab);
+                            Navigator.pushNamed(context, AppRoutes.transactionTab);
                           } ,
                           child: Text(
                               AppStrings.viewAll,

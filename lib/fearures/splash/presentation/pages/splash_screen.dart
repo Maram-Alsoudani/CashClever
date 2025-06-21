@@ -3,9 +3,10 @@ import 'package:CashClever/core/utils/colors.dart';
 import 'package:CashClever/core/utils/extentions/text_styles.dart';
 import 'package:CashClever/core/utils/strings.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'dart:async';
 import 'package:lottie/lottie.dart';
+
+import '../../../../core/cache/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -29,10 +30,16 @@ class _SplashScreenState extends State<SplashScreen>
       parent: _controller,
       curve: Curves.easeIn,
     );
+    String autoLogin() {
+      var item = SharedPrefs.getData(key: AppStrings.loggedInUserKey);
+      return item != null
+          ? AppRoutes.mainScreen
+          : AppRoutes.loginScreen;
+    }
 
     _controller.forward().then((_) {
       Timer(const Duration(milliseconds: 1500), () {
-        context.go(AppRoutes.loginScreen);
+          Navigator.pushNamed(context, autoLogin());
       });
     });
   }

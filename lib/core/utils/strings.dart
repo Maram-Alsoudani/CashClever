@@ -36,7 +36,7 @@ class AppStrings{
   static const String date= "Date";
   static const String notes= "Notes";
   static const String save= "Save";
-
+static const String loggedInUserKey= "LoggedInUser";
 
 
 

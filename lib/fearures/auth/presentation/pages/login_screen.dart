@@ -9,20 +9,19 @@ import 'package:CashClever/core/utils/extentions/text_styles.dart';
 import 'package:CashClever/core/utils/images.dart';
 import 'package:CashClever/core/utils/strings.dart';
 import 'package:CashClever/fearures/auth/presentation/manager/auth_states.dart';
-import 'package:CashClever/fearures/auth/presentation/manager/login_view_model.dart';
+import 'package:CashClever/fearures/auth/presentation/manager/login_cubit.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
 
-LoginViewModel viewModel= getIt<LoginViewModel>();
+LoginCubit viewModel= getIt<LoginCubit>();
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LoginViewModel, AuthStates>(
+    return BlocConsumer<LoginCubit, AuthStates>(
       bloc: viewModel,
       listener: (context, state){
         if(state is AuthErrorState){
@@ -33,7 +32,7 @@ LoginViewModel viewModel= getIt<LoginViewModel>();
             posActionName: "Close"
           );
         }else if(state is AuthSuccessState){
-          context.go(AppRoutes.mainScreen);
+          Navigator.pushNamed(context, AppRoutes.mainScreen);
         }
       },
       builder: (context, state){
@@ -107,7 +106,7 @@ LoginViewModel viewModel= getIt<LoginViewModel>();
                           alignment: Alignment.bottomRight,
                           child: TextButton(
                               onPressed: () {
-                                context.go(AppRoutes.resetPassScreen);
+                                Navigator.pushNamed(context,AppRoutes.resetPassScreen);
                               },
                               child: Text(
                                 AppStrings.forgotPass,
@@ -133,7 +132,7 @@ LoginViewModel viewModel= getIt<LoginViewModel>();
 
                         InkWell(
                           onTap: (){
-                            context.go(AppRoutes.registerScreen);
+                            Navigator.pushNamed(context, AppRoutes.registerScreen);
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,

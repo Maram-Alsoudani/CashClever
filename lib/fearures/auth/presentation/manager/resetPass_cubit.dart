@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 @injectable
-class ResetPassViewModel extends Cubit<AuthStates>{
+class ResetPassCubit extends Cubit<AuthStates>{
   ForgotPassUseCase forgotPassUseCase;
-  ResetPassViewModel({required this.forgotPassUseCase}):super(AuthInitialState());
+  ResetPassCubit({required this.forgotPassUseCase}):super(AuthInitialState());
 
   TextEditingController emailController= TextEditingController();
 
