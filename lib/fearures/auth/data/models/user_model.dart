@@ -1,8 +1,8 @@
 import 'package:CashClever/fearures/auth/domain/entities/user_entity.dart';
 
-class UserDTO extends UserEntity{
+class UserModel extends UserEntity{
 
-  UserDTO({
+  UserModel({
     required super.id,
     required super.name,
     required super.email,
@@ -23,7 +23,7 @@ class UserDTO extends UserEntity{
     };
   }
 
-  UserDTO.fromJson(Map<String, dynamic> json)
+  UserModel.fromJson(Map<String, dynamic> json)
       : super(
     id: json['id'],
     name:json['name'],

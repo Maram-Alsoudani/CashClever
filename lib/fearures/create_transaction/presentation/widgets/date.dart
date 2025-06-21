@@ -1,5 +1,9 @@
 import 'package:CashClever/core/utils/extentions/text_styles.dart';
+import 'package:CashClever/fearures/create_transaction/presentation/manager/cubits/Create_transaction_cubit.dart';
+import 'package:CashClever/fearures/create_transaction/presentation/manager/cubits/date_cubit.dart';
+import 'package:CashClever/fearures/create_transaction/presentation/manager/states/date_states.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/utils/colors.dart';
@@ -13,48 +17,56 @@ class Date extends StatefulWidget {
 }
 
 class _DateState extends State<Date> {
-  DateTime selectedDate = DateTime.now();
+
 
   @override
   Widget build(BuildContext context) {
-    String formattedSelectedDate =
-    DateFormat('dd-MM-yyyy – hh:mm').format(selectedDate);
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20),
-      child: InkWell(
-        onTap: () {
-          showCalender();
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              AppStrings.date,
-              style:
-              context.bodyMedium.copyWith(color: AppColors.black),
+    final cubit= context.read<DateCubit>();
+    return BlocBuilder<DateCubit, DateState>(
+        builder: (context, state){
+          DateTime dateTime = state is DateUpdatedState?state.updatedDate: DateTime.now();
+          if(state is DateUpdatedState){
+            context.read<CreateTransactionCubit>().updateDate(state.updatedDate);
+          }
+          String formattedDate=  DateFormat('dd-MM-yyyy – hh:mm').format(dateTime);
+
+
+          return Padding(
+          padding: EdgeInsets.symmetric(vertical: 20),
+          child: InkWell(
+            onTap: (){
+              _showCalendar(context);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  AppStrings.date,
+                  style:
+                  context.bodyMedium.copyWith(color: AppColors.black),
+                ),
+                Text(
+                  formattedDate,
+                  style: context.bodySmall
+                      .copyWith(fontWeight: FontWeight.w300),
+                ),
+              ],
             ),
-            Text(
-              formattedSelectedDate,
-              style: context.bodySmall
-                  .copyWith(fontWeight: FontWeight.w300),
-            ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
+
     );
   }
-  void showCalender() {
-    showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2020),
-        lastDate: DateTime.now())
-        .then((value) {
-      if (value != null) {
-        setState(() {
-          selectedDate = value;
-        });
-      }
-    });
-  }
-}
+  void _showCalendar(BuildContext context) async {
+    final selectedDate = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2020),
+      lastDate: DateTime.now(),
+    );
+
+    if (selectedDate != null) {
+      context.read<DateCubit>().updateDate(selectedDate);
+    }
+  }}

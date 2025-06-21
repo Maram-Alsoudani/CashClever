@@ -6,10 +6,10 @@ import 'package:injectable/injectable.dart';
 import 'auth_states.dart';
 
 @injectable
-class RegisterViewModel extends Cubit<AuthStates> {
+class RegisterCubit extends Cubit<AuthStates> {
   RegisterUseCase registerUseCase;
 
-  RegisterViewModel({required this.registerUseCase})
+  RegisterCubit({required this.registerUseCase})
       : super(AuthInitialState());
 
   //1- hold data

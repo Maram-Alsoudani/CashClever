@@ -6,7 +6,6 @@ import 'package:CashClever/core/utils/strings.dart';
 import 'package:CashClever/fearures/home/presentation/pages/home_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import '../../../budget/presentation/pages/budget_tab.dart';
 import '../../../settings/presentation/pages/settings_tab.dart';
 import '../../../transactions/presentation/pages/transaction_tab.dart';
@@ -36,7 +35,8 @@ class _MainScreenState extends State<MainScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.go(AppRoutes.newTransaction);
+          print("-------------------------------------------Maram");
+          Navigator.pushNamed(context,AppRoutes.createTransactionScreen);
         },
         child: Icon(
           Icons.add,

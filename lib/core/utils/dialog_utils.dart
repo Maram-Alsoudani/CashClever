@@ -8,7 +8,6 @@ class DialogUtils {
     showDialog(
         context: context,
         barrierDismissible: false,
-        // Prevent dismissing the dialog by tapping outside
         builder: (context) {
           return AlertDialog(
             backgroundColor: AppColors.white,

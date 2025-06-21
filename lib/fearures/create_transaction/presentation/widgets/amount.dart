@@ -5,7 +5,7 @@ import '../../../../core/utils/colors.dart';
 
 class Amount extends StatelessWidget {
   String amount;
-  Function onClicked;
+  Function() onClicked;
    Amount({super.key, required this.amount, required this.onClicked});
 
   @override

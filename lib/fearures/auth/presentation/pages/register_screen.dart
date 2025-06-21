@@ -8,22 +8,21 @@ import 'package:CashClever/core/utils/dialog_utils.dart';
 import 'package:CashClever/core/utils/extentions/text_styles.dart';
 import 'package:CashClever/core/utils/images.dart';
 import 'package:CashClever/core/utils/strings.dart';
-import 'package:CashClever/fearures/auth/presentation/manager/register_view_model.dart';
+import 'package:CashClever/fearures/auth/presentation/manager/register_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../core/dependency_injection.dart';
 import '../manager/auth_states.dart';
 
 class RegisterScreen extends StatelessWidget {
   RegisterScreen({super.key});
-  RegisterViewModel viewModel= getIt<RegisterViewModel>();
+  RegisterCubit viewModel= getIt<RegisterCubit>();
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RegisterViewModel, AuthStates>(
+    return BlocConsumer<RegisterCubit, AuthStates>(
       bloc: viewModel,
       listener: (context, state){
         if(state is AuthErrorState){
@@ -34,7 +33,7 @@ class RegisterScreen extends StatelessWidget {
             posActionName: "Close"
           );
         }else if(state is AuthSuccessState){
-          context.go(AppRoutes.loginScreen);
+          Navigator.pushNamed(context, AppRoutes.loginScreen);
         }
       },
       builder: (context, state){
@@ -148,7 +147,7 @@ class RegisterScreen extends StatelessWidget {
 
                        InkWell(
                          onTap: (){
-                           context.go(AppRoutes.loginScreen);
+                           Navigator.pushNamed(context, AppRoutes.loginScreen);
                          },
                          child: Row(
                            mainAxisAlignment: MainAxisAlignment.center,

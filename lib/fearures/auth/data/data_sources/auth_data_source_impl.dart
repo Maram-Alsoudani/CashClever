@@ -1,3 +1,4 @@
+import 'package:CashClever/core/utils/strings.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
@@ -5,7 +6,7 @@ import 'package:CashClever/core/cache/shared_preferences.dart';
 import 'package:CashClever/core/errors/failures.dart';
 import 'package:CashClever/core/utils/firebase/firebase_utils.dart';
 import 'package:CashClever/fearures/auth/data/data_sources/auth_data_source.dart';
-import 'package:CashClever/fearures/auth/data/models/user_dto.dart';
+import 'package:CashClever/fearures/auth/data/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
@@ -26,7 +27,7 @@ class AuthDataSourceImpl implements AuthDataSource {
         password: password,
       );
 
-      UserDTO user = UserDTO(
+      UserModel user = UserModel(
         id: userCredential.user?.uid ?? "user id not found",
         name: username,
         email: email,
@@ -66,11 +67,11 @@ class AuthDataSourceImpl implements AuthDataSource {
       final credential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
 
-      UserDTO? userDoc =
+      UserModel? userDoc =
           await FirebaseUtils.getUser(credential.user?.uid ?? "User Not Found");
       if (userDoc != null) {
         await SharedPrefs.setData(
-          key: "LoggedInUser",
+          key: AppStrings.loggedInUserKey,
           value: userDoc.toJson(),
         );
       } else {

@@ -7,10 +7,10 @@ import '../../domain/use_cases/login_use_case.dart';
 import 'auth_states.dart';
 
 @injectable
-class LoginViewModel extends Cubit<AuthStates> {
+class LoginCubit extends Cubit<AuthStates> {
   LoginUseCase loginUseCase;
 
-  LoginViewModel({required this.loginUseCase})
+  LoginCubit({required this.loginUseCase})
       : super(AuthInitialState());
 
   //1- hold data

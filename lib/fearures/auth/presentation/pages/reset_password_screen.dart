@@ -1,11 +1,10 @@
 import 'package:CashClever/core/utils/dialog_utils.dart';
 import 'package:CashClever/core/utils/extentions/text_styles.dart';
 import 'package:CashClever/fearures/auth/presentation/manager/auth_states.dart';
-import 'package:CashClever/fearures/auth/presentation/manager/resetPass_view_model.dart';
+import 'package:CashClever/fearures/auth/presentation/manager/resetPass_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import '../../../../config/routes.dart';
 import '../../../../core/components/custom_text_form_field.dart';
 import '../../../../core/components/primary_button.dart';
@@ -19,10 +18,10 @@ class ResetPassScreen extends StatelessWidget {
   ResetPassScreen({super.key});
 
   TextEditingController emailController = TextEditingController();
-  ResetPassViewModel viewModel= getIt<ResetPassViewModel>();
+  ResetPassCubit viewModel= getIt<ResetPassCubit>();
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ResetPassViewModel, AuthStates>(
+    return BlocConsumer<ResetPassCubit, AuthStates>(
       bloc: viewModel,
       listener: (context, state){
         if(state is AuthErrorState){
@@ -36,7 +35,7 @@ class ResetPassScreen extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Password reset email sent.'))
           );
-          context.go(AppRoutes.loginScreen);
+          Navigator.pushNamed(context, AppRoutes.loginScreen);
         }
       },
       builder: (context, state){
