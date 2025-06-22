@@ -71,7 +71,9 @@ class _BudgetTabState extends State<BudgetTab> {
                     color: AppColors.lightGray,
                     borderRadius: BorderRadius.circular(30.r),
                   ),
-                  child:CustomTabBar(labels: ["Expenses", "Income"]),
+                  child:CustomTabBar(
+                      onTap: (index){},
+                      labels: ["Expenses", "Income"]),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),

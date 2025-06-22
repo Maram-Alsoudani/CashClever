@@ -1,4 +1,5 @@
 import 'package:CashClever/fearures/create_transaction/domain/entities/transaction_entity.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TransactionModel extends TransactionEntity {
   TransactionModel(
@@ -25,6 +26,8 @@ class TransactionModel extends TransactionEntity {
             type: json["type"] as String,
             amount: json["amount"] as double,
             category: json["category"] as String,
-            time: DateTime.fromMillisecondsSinceEpoch(json["time"]),
+            time: json["time"] is Timestamp
+                ? (json["time"] as Timestamp).toDate()
+                : DateTime.fromMillisecondsSinceEpoch(json["time"]),
             note: json["note"] as String);
 }

@@ -17,10 +17,9 @@ class TransactionTab extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             leading: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.arrow_back,
-              ),
+              onPressed: () {
+              },
+              icon: Container(),
             ),
             title: Text(
               AppStrings.transactions,
@@ -38,7 +37,9 @@ class TransactionTab extends StatelessWidget {
                   color: AppColors.lightGray,
                   borderRadius: BorderRadius.circular(30.r),
                 ),
-                child: CustomTabBar(labels: [
+                child: CustomTabBar(
+                    onTap: (index){},
+                    labels: [
                   AppStrings.all,
                   AppStrings.incoming,
                   AppStrings.expenses
