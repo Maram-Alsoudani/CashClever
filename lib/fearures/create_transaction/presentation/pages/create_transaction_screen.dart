@@ -79,7 +79,11 @@ class CreateTransactionScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  CustomTabBar(labels: [AppStrings.income, AppStrings.expenses]),
+                  CustomTabBar(
+                      onTap: (index){
+                        cubit.getType(index);
+                      },
+                      labels: [AppStrings.income, AppStrings.expenses]),
                   Amount(
                     amount: state is AmountUpdateState
                         ? state.updatedAmount

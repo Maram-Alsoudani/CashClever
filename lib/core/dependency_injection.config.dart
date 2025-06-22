@@ -34,6 +34,17 @@ import '../fearures/create_transaction/domain/use_cases/create_transaction_use_c
     as _i520;
 import '../fearures/create_transaction/presentation/manager/cubits/Create_transaction_cubit.dart'
     as _i169;
+import '../fearures/home/data/data_sources/get_transaction_data_source.dart'
+    as _i752;
+import '../fearures/home/data/data_sources/get_transactions_data_source_impl.dart'
+    as _i656;
+import '../fearures/home/data/repositories/get_transactions_repo_impl.dart'
+    as _i428;
+import '../fearures/home/domain/repositories/get_transactions_repo.dart'
+    as _i11;
+import '../fearures/home/domain/use_cases/get_transactions_use_case.dart'
+    as _i498;
+import '../fearures/home/presentation/manager/cubit/home_cubit.dart';
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -46,9 +57,15 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
+    gh.factory<_i752.GetTransactionsDataSource>(
+        () => _i656.GetTransactionsDataSourceImpl());
+    gh.factory<HomeCubit>(
+        () => HomeCubit(useCase: gh<_i498.GetTransactionUseCase>()));
     gh.factory<_i429.TransactionsDataSource>(
         () => _i978.TransactionsDataSourceImpl());
     gh.factory<_i413.AuthDataSource>(() => _i216.AuthDataSourceImpl());
+    gh.factory<_i11.GetTransactionsRepo>(() => _i428.GetTransactionsRepoImpl(
+        dataSource: gh<_i752.GetTransactionsDataSource>()));
     gh.factory<_i929.AuthRepo>(
         () => _i1042.AuthRepoImpl(authDataSource: gh<_i413.AuthDataSource>()));
     gh.factory<_i578.TransactionsRepo>(() => _i307.TransactionsRepoImpl(
@@ -57,6 +74,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i829.RegisterUseCase(registerRepo: gh<_i929.AuthRepo>()));
     gh.factory<_i471.RegisterCubit>(() =>
         _i471.RegisterCubit(registerUseCase: gh<_i829.RegisterUseCase>()));
+    gh.factory<_i498.GetTransactionUseCase>(() => _i498.GetTransactionUseCase(
+        getTransactionRepo: gh<_i11.GetTransactionsRepo>()));
     gh.factory<_i828.ForgotPassUseCase>(
         () => _i828.ForgotPassUseCase(authRepo: gh<_i929.AuthRepo>()));
     gh.factory<_i308.LoginUseCase>(
