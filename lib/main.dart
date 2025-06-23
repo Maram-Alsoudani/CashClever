@@ -2,6 +2,7 @@ import 'package:CashClever/core/utils/strings.dart';
 import 'package:CashClever/fearures/create_transaction/presentation/manager/cubits/calculator_cubit.dart';
 import 'package:CashClever/fearures/create_transaction/presentation/manager/cubits/category_cubit.dart';
 import 'package:CashClever/fearures/home/presentation/manager/cubit/home_cubit.dart';
+import 'package:CashClever/fearures/transactions/presentation/manager/transactions_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +29,8 @@ void main() async {
   runApp(
     MultiBlocProvider(providers: [
       BlocProvider(create: (_) =>getIt<HomeCubit>()
+      ),
+      BlocProvider(create: (_) =>getIt<TransactionsCubit>()
       ),
 
       BlocProvider(create: (_) =>getIt<CreateTransactionCubit>()),

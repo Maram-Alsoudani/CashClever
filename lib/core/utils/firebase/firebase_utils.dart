@@ -44,7 +44,7 @@ class FirebaseUtils {
     return documentSnapshot.data();
   }
 
-static Stream<List<TransactionModel>> getTransactions(String uid, TimeFilter filter)  {
+static Stream<List<TransactionModel>> getTransactionsByTime(String uid, TimeFilter filter)  {
 
     final now = DateTime.now();
     DateTime? startDate;
@@ -77,6 +77,48 @@ static Stream<List<TransactionModel>> getTransactions(String uid, TimeFilter fil
     });
   }
 
+  static Stream<List<TransactionEntity>> getTransactionsByType(String uid, TypeFilter filter){
+    CollectionReference<TransactionModel> transactions =
+    FirebaseUtils.getTransactionsCollection(uid);
+    if(filter == TypeFilter.all){
+      return transactions.snapshots().map((snapshot) {
+        return snapshot.docs.map((doc) {
+          var data = doc.data();
+          return TransactionModel(
+              type: data.type,
+              amount: data.amount,
+              category: data.category,
+              time: data.time,
+              note: data.note);
+        }).toList();
+      });
+    }else{
+      return transactions.where(
+
+          'type', isEqualTo: filter==TypeFilter.expenses? "expenses":"income" )
+          .snapshots().map((snapshot) {
+        return snapshot.docs.map((doc) {
+          var data = doc.data();
+          return TransactionModel(
+              type: data.type,
+              amount: data.amount,
+              category: data.category,
+              time: data.time,
+              note: data.note);
+        }).toList();
+      });
+    }
 
 
+  }
+
+
+}
+enum TimeFilter {
+  today,
+  week,
+  month,
+}
+enum TypeFilter{
+  all, income, expenses,
 }

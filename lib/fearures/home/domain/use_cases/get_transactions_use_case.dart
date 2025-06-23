@@ -4,6 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/errors/failures.dart';
+import '../../../../core/utils/firebase/firebase_utils.dart';
 import '../../../create_transaction/domain/entities/transaction_entity.dart';
 @injectable
 class GetTransactionUseCase{

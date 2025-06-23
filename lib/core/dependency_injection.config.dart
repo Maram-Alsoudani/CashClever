@@ -44,7 +44,19 @@ import '../fearures/home/domain/repositories/get_transactions_repo.dart'
     as _i11;
 import '../fearures/home/domain/use_cases/get_transactions_use_case.dart'
     as _i498;
-import '../fearures/home/presentation/manager/cubit/home_cubit.dart';
+import '../fearures/home/presentation/manager/cubit/home_cubit.dart' as _i734;
+import '../fearures/transactions/data/data_sources/get_all_transactions_data_source.dart'
+    as _i390;
+import '../fearures/transactions/data/data_sources/get_all_transactions_data_source_impl.dart'
+    as _i287;
+import '../fearures/transactions/data/repositories/get_all_transactions_repo_impl.dart'
+    as _i440;
+import '../fearures/transactions/domain/repositories/get_all_transactions_repo.dart'
+    as _i1004;
+import '../fearures/transactions/domain/use_cases/get_all_transactions_use_case.dart'
+    as _i279;
+import '../fearures/transactions/presentation/manager/transactions_cubit.dart'
+    as _i907;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -59,11 +71,14 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i752.GetTransactionsDataSource>(
         () => _i656.GetTransactionsDataSourceImpl());
-    gh.factory<HomeCubit>(
-        () => HomeCubit(useCase: gh<_i498.GetTransactionUseCase>()));
+    gh.factory<_i390.GetTransactionsByTypeDataSource>(
+        () => _i287.GetTransactionsByTypeDataSourceImpl());
     gh.factory<_i429.TransactionsDataSource>(
         () => _i978.TransactionsDataSourceImpl());
     gh.factory<_i413.AuthDataSource>(() => _i216.AuthDataSourceImpl());
+    gh.factory<_i1004.GetTransactionsByTypeRepo>(() =>
+        _i440.GetTransactionsByTypeRepoImpl(
+            dataSource: gh<_i390.GetTransactionsByTypeDataSource>()));
     gh.factory<_i11.GetTransactionsRepo>(() => _i428.GetTransactionsRepoImpl(
         dataSource: gh<_i752.GetTransactionsDataSource>()));
     gh.factory<_i929.AuthRepo>(
@@ -74,12 +89,17 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i829.RegisterUseCase(registerRepo: gh<_i929.AuthRepo>()));
     gh.factory<_i471.RegisterCubit>(() =>
         _i471.RegisterCubit(registerUseCase: gh<_i829.RegisterUseCase>()));
+    gh.factory<_i279.GetTransactionsByTypeUseCase>(() =>
+        _i279.GetTransactionsByTypeUseCase(
+            repo: gh<_i1004.GetTransactionsByTypeRepo>()));
     gh.factory<_i498.GetTransactionUseCase>(() => _i498.GetTransactionUseCase(
         getTransactionRepo: gh<_i11.GetTransactionsRepo>()));
     gh.factory<_i828.ForgotPassUseCase>(
         () => _i828.ForgotPassUseCase(authRepo: gh<_i929.AuthRepo>()));
     gh.factory<_i308.LoginUseCase>(
         () => _i308.LoginUseCase(authRepo: gh<_i929.AuthRepo>()));
+    gh.factory<_i734.HomeCubit>(
+        () => _i734.HomeCubit(useCase: gh<_i498.GetTransactionUseCase>()));
     gh.factory<_i520.CreateTransactionUseCase>(() =>
         _i520.CreateTransactionUseCase(
             transactionsRepo: gh<_i578.TransactionsRepo>()));
@@ -87,6 +107,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i886.ResetPassCubit(forgotPassUseCase: gh<_i828.ForgotPassUseCase>()));
     gh.factory<_i169.CreateTransactionCubit>(() => _i169.CreateTransactionCubit(
         useCase: gh<_i520.CreateTransactionUseCase>()));
+    gh.factory<_i907.TransactionsCubit>(() => _i907.TransactionsCubit(
+        useCase: gh<_i279.GetTransactionsByTypeUseCase>()));
     gh.factory<_i808.LoginCubit>(
         () => _i808.LoginCubit(loginUseCase: gh<_i308.LoginUseCase>()));
     return this;

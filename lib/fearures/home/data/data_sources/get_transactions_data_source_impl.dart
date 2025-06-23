@@ -18,7 +18,7 @@ class GetTransactionsDataSourceImpl implements GetTransactionsDataSource {
       var user = SharedPrefs.getData(key: AppStrings.loggedInUserKey);
       final uid = user?.id ?? "";
 
-      Stream<List<TransactionModel>> transactionsList = FirebaseUtils.getTransactions(uid, filter);
+      Stream<List<TransactionModel>> transactionsList = FirebaseUtils.getTransactionsByTime(uid, filter);
 
       return transactionsList.map((models) {
         final entities = models.map((model) => model as TransactionEntity).toList();
