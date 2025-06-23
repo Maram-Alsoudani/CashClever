@@ -1,11 +1,16 @@
 import 'package:CashClever/core/utils/extentions/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import '../../../../core/utils/colors.dart';
 
 class TransactionWidget extends StatelessWidget {
-  final String category, description, amount, date;
-  const TransactionWidget({super.key, required this.amount, required this.category, required this.date, required this.description});
+  final String category;
+      final String description; 
+      final String amount;
+      final  DateTime date;
+      final String type;
+   const TransactionWidget({super.key, required this.amount, required this.category, required this.date, required this.description, required this.type});
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +47,14 @@ class TransactionWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(amount, style: context.bodyMedium.copyWith(color: AppColors.red),),
-              Text(date, style: context.bodySmall,),
+              Text(type=="income"? "+$amount" : "-$amount", style: context.bodyMedium.copyWith(color:type=="expenses"? AppColors.red:AppColors.green),),
+              Text(formatDate(date), style: context.bodySmall,),
             ],)
         ],),
     );
   }
+}
+String formatDate(DateTime date){
+  final formattedTime = DateFormat("dd/MM/yyyy 'at' hh:mm a").format(date);
+  return formattedTime;
 }

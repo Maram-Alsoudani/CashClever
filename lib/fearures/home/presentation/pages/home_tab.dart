@@ -201,7 +201,9 @@ class _HomeTabState extends State<HomeTab> {
                             TextButton(
                               onPressed: () {
                                 Navigator.pushNamed(
-                                    context, AppRoutes.transactionTab);
+                                    context, AppRoutes.transactionTab,
+                                arguments: Icon(Icons.arrow_back)
+                                );
                               },
                               child: Text(AppStrings.viewAll,
                                   style: context.bodySmall
